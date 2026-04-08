@@ -8,8 +8,8 @@ const config = {
       pages: '.vite/renderer/main_window'
     }),
     alias: {
-      '@lib': '../../packages/svelte/src/lib',
-      '@lib/*': '../../packages/svelte/src/lib/*'
+      '@lib': '../../packages/ui/src/lib',
+      '@lib/*': '../../packages/ui/src/lib/*'
     }
   }
 };

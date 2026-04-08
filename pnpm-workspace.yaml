@@ -7,3 +7,4 @@ onlyBuiltDependencies:
   - electron
   - electron-winstaller
   - libpq
+  - '@tailwindcss/oxide'

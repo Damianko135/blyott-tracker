@@ -61,9 +61,9 @@ export default defineConfig({
 ## Shadcn-Svelte
 
 Currently, in the monorepo, every `package.json` has a `shadcn` script that runs
-`pnpm dlx shadcn-svelte@latest add $@` in the `packages/svelte` directory. This is so that you can
+`pnpm dlx shadcn-svelte@latest add $@` in the `packages/ui` directory. This is so that you can
 install `shadcn-svelte` components from any workspace in the monorepo just like you do a normal
-`npm` package, but the contents will always be installs in the `packages/svelte` directory.
+`npm` package, but the contents will always be installs in the `packages/ui` directory.
 
 > [!IMPORTANT] You should only install `shadcn-svelte` components using the `shadcn` script:
 >
@@ -71,7 +71,7 @@ install `shadcn-svelte` components from any workspace in the monorepo just like 
 > pnpm run shadcn <component-name>
 > ```
 
-The `packages/svelte` component library then exports the `shadcn` components so that you can import
+The `packages/ui` component library then exports the `shadcn` components so that you can import
 them in other packages:
 
 ```json
@@ -83,7 +83,7 @@ them in other packages:
 }
 ```
 
-You can read more in [here](./packages/svelte/README.md).
+You can read more in [here](./packages/ui/README.md).
 
 ## Using Shadcn-Svelte Components
 
@@ -92,29 +92,29 @@ limitations in SvelteKit, Vite, and `shadcn-svelte` itself, but I'll try to expl
 here.
 
 We can already use `shadcn-svelte` components in other packages in the monorepo since we export them
-from the `packages/svelte` directory. We import them into apps by adding
+from the `packages/ui` directory. We import them into apps by adding
 `"@blyott-tracker/svelte": "workspace:*"` to the `dependencies` in the `package.json` of the app.
-The problem is that the utilities and the styles that the `packages/svelte` components need aren't
+The problem is that the utilities and the styles that the `packages/ui` components need aren't
 imported correctly.
 
-We fix that by first using `@lib` imports within the `packages/svelte` directory instead of `$lib`.
-Again, you can read more about this in the `packages/svelte` README. When we use `packages/svelte`
+We fix that by first using `@lib` imports within the `packages/ui` directory instead of `$lib`.
+Again, you can read more about this in the `packages/ui` README. When we use `packages/ui`
 component, we need to add the following the app's `svelte.config.js`:
 
 ```js
 // svelte.config.js
 alias: {
-  '@lib': '../../packages/svelte/src/lib',
-  '@lib/*': '../../packages/svelte/src/lib/*'
+  '@lib': '../../packages/ui/src/lib',
+  '@lib/*': '../../packages/ui/src/lib/*'
 }
 ```
 
 Because we're using `@lib` imports, exclusively in the `shadcn-svelte` components, we can point them
-directly to the `packages/svelte` directory relative to the app's `svelte.config.js`. This will
+directly to the `packages/ui` directory relative to the app's `svelte.config.js`. This will
 resolve imports within the `shadcn-svelte` components correctly.
 
 The next thing we have to do is import the styles correctly. Again, you can already import the
-styles because we export them from the `packages/svelte` package:
+styles because we export them from the `packages/ui` package:
 
 ```
   "./shadcn/css": "./src/app.css",
@@ -132,19 +132,19 @@ possible._ Right now, `tailwindcss` is only looking within the app's directory f
 never import the styles neeeded by the `shadcn-svelte` components. To fix this we need to add:
 
 ```
-@source '../../../packages/svelte/src/**/*.{html,js,svelte,ts}';
+@source '../../../packages/ui/src/**/*.{html,js,svelte,ts}';
 ```
 
-to the `app.css` file (or wherever the relative path is to the `packages/svelte` directory). This
-will tell `tailwindcss` to also look in the `packages/svelte` directory for files that it needs to
+to the `app.css` file (or wherever the relative path is to the `packages/ui` directory). This
+will tell `tailwindcss` to also look in the `packages/ui` directory for files that it needs to
 parse.
 
 ## Sharing Static Files
 
 In this monorepo, we have custom font files that we want to share across the monorepo. We have a
-`fonts.css` file in `packages/svelte` that is imported in apps across the monorepo. The problem is
+`fonts.css` file in `packages/ui` that is imported in apps across the monorepo. The problem is
 that the `fonts.css` file is referencing `woff2` files that are in the `static` directory of the
-`packages/svelte` package. When importing the `fonts.css` file, the apps that use it don't have
+`packages/ui` package. When importing the `fonts.css` file, the apps that use it don't have
 access to these static files. We need to some how tell the app where these files are located.
 
 We will fix this by using `vite-plugin-static-copy` resolve this. We add the following to the
@@ -156,7 +156,7 @@ export default defineConfig({
     ...
     viteStaticCopy({
       // don't point to static directory, point to finished build directory (static -> / after build)
-      targets: [{ src: '../../packages/svelte/static/fonts/*', dest: 'fonts' }]
+      targets: [{ src: '../../packages/ui/static/fonts/*', dest: 'fonts' }]
     })
   ],
 ...

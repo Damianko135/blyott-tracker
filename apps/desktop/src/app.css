@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-@source '../../../packages/svelte/src/**/*.{html,js,svelte,ts}';
+@source '../../../packages/ui/src/**/*.{html,js,svelte,ts}';
 @import '@blyott-tracker/svelte/shadcn/css';
 @import '@blyott-tracker/svelte/styles/fonts';
