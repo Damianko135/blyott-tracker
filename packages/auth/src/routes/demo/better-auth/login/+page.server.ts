@@ -1,11 +1,10 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
-import type { PageServerLoad } from './$types';
 import { auth } from '$lib/server/auth';
+import { fail, redirect } from '@sveltejs/kit';
 import { APIError } from 'better-auth/api';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = (event) => {
-	if (event.locals.user) {
+	if (event.locals.session) {
 		return redirect(302, '/demo/better-auth');
 	}
 	return {};

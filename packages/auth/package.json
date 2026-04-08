@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && npm run prepack",
+		"build": "vite build && pnpm run prepack",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
@@ -39,6 +39,9 @@
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"@blyott-tracker/blyott": "workspace:*"
 	},
 	"devDependencies": {
 		"@better-auth/cli": "~1.4.21",

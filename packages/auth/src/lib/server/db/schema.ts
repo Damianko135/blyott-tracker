@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, text } from 'drizzle-orm/pg-core';
+import { integer, pgTable, serial, text } from 'drizzle-orm/pg-core';
 
 export const task = pgTable('task', {
 	id: serial('id').primaryKey(),
@@ -6,4 +6,4 @@ export const task = pgTable('task', {
 	priority: integer('priority').notNull().default(1)
 });
 
-export * from './auth.schema';
+export * from './auth.schema.ts';

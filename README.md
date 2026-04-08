@@ -71,8 +71,8 @@ install `shadcn-svelte` components from any workspace in the monorepo just like 
 > pnpm run shadcn <component-name>
 > ```
 
-The `packages/ui` component library then exports the `shadcn` components so that you can import
-them in other packages:
+The `packages/ui` component library then exports the `shadcn` components so that you can import them
+in other packages:
 
 ```json
 // package.json
@@ -110,8 +110,8 @@ alias: {
 ```
 
 Because we're using `@lib` imports, exclusively in the `shadcn-svelte` components, we can point them
-directly to the `packages/ui` directory relative to the app's `svelte.config.js`. This will
-resolve imports within the `shadcn-svelte` components correctly.
+directly to the `packages/ui` directory relative to the app's `svelte.config.js`. This will resolve
+imports within the `shadcn-svelte` components correctly.
 
 The next thing we have to do is import the styles correctly. Again, you can already import the
 styles because we export them from the `packages/ui` package:
@@ -135,17 +135,16 @@ never import the styles neeeded by the `shadcn-svelte` components. To fix this w
 @source '../../../packages/ui/src/**/*.{html,js,svelte,ts}';
 ```
 
-to the `app.css` file (or wherever the relative path is to the `packages/ui` directory). This
-will tell `tailwindcss` to also look in the `packages/ui` directory for files that it needs to
-parse.
+to the `app.css` file (or wherever the relative path is to the `packages/ui` directory). This will
+tell `tailwindcss` to also look in the `packages/ui` directory for files that it needs to parse.
 
 ## Sharing Static Files
 
 In this monorepo, we have custom font files that we want to share across the monorepo. We have a
-`fonts.css` file in `packages/ui` that is imported in apps across the monorepo. The problem is
-that the `fonts.css` file is referencing `woff2` files that are in the `static` directory of the
-`packages/ui` package. When importing the `fonts.css` file, the apps that use it don't have
-access to these static files. We need to some how tell the app where these files are located.
+`fonts.css` file in `packages/ui` that is imported in apps across the monorepo. The problem is that
+the `fonts.css` file is referencing `woff2` files that are in the `static` directory of the
+`packages/ui` package. When importing the `fonts.css` file, the apps that use it don't have access
+to these static files. We need to some how tell the app where these files are located.
 
 We will fix this by using `vite-plugin-static-copy` resolve this. We add the following to the
 `vite.config.ts` of the app:

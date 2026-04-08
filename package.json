@@ -5,9 +5,9 @@
   "scripts": {
     "setup": "docker compose -f ./setup.yaml -p setup up",
     "dev": "pnpm --filter @blyott-tracker/web dev",
-    "format": "prettier --write .",
-    "lint": "prettier --check .",
-    "shadcn": "pnpm dlx shadcn-svelte@latest add $@ -c packages/ui"
+    "format": "pnpm -r --if-present format",
+    "lint": "pnpm -r --if-present lint",
+    "shadcn": "pnpm dlx shadcn-svelte@latest add -c packages/ui"
   },
   "devDependencies": {
     "prettier": "^3.8.1",

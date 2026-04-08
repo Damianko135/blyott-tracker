@@ -3,9 +3,8 @@
 // This is a dirty testing module for Blyott Tracker
 // This module is meant to be used for testing purposes only and should NEVER be used in production.
 
-
-import { Auth } from '../src/auth'; // Import the Auth class from the src directory
 import { env } from 'node:process';
+import { createBlyottClient } from '../src/client';
 
 const ENV_FILE_PATH = '../../../.env'; // Path to the .env file
 
@@ -13,24 +12,24 @@ const ENV_FILE_PATH = '../../../.env'; // Path to the .env file
 import { config } from 'dotenv';
 config({ path: ENV_FILE_PATH });
 
-// Create an instance of the Auth class for testing
-const auth = new Auth();
+const client = createBlyottClient({
+  baseUrl: env.BLYOTT_API_URL || 'https://api.blyott.com'
+});
 
-const USERNAME = env.TEST_USERNAME!
-const PASSWORD = env.TEST_PASSWORD!
+const USERNAME = env.TEST_USERNAME!;
+const PASSWORD = env.TEST_PASSWORD!;
 
-console.log('Starting dirty testing for Auth module...');
+console.log('Starting dirty testing for Blyott client...');
 console.log('Using test credentials from .env file: Username:', USERNAME, 'Password:', '********');
 
 // Login with test credentials (these should be replaced with valid test credentials)
-auth.login(USERNAME, PASSWORD)
-    .then(() => {
-        console.log('Login successful');
-        // Get the token after successful login
-        const token = auth.getToken();
-        console.log('Retrieved token:', token);
-    }
-    ).catch((error) => {
-        console.error('Login failed:', error.message);
-    }
-    );
+client
+  .login({ username: USERNAME, password: PASSWORD })
+  .then(() => {
+    console.log('Login successful');
+    const token = client.getToken();
+    console.log('Retrieved token:', token);
+  })
+  .catch((error) => {
+    console.error('Login failed:', error.message);
+  });

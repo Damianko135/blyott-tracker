@@ -1,13 +1,29 @@
 {
   "name": "@blyott-tracker/blyott",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Warn: no tests currently defined\" && exit 0"
+  "description": "Blyott API client and types",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
   },
-  "keywords": [],
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Warn: no tests currently defined\" && exit 0",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "blyott",
+    "api",
+    "client"
+  ],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.1"
+  "packageManager": "pnpm@10.8.1",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.58.1"
+  }
 }
