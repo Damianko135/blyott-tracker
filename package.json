@@ -1,6 +1,7 @@
 {
   "name": "blyott-tracker",
   "version": "1.0.0",
+  "type": "module",
   "packageManager": "pnpm@10.8.1",
   "scripts": {
     "setup": "docker compose -f ./setup.yaml -p setup up",
@@ -10,9 +11,18 @@
     "shadcn": "pnpm dlx shadcn-svelte@latest add -c packages/ui"
   },
   "devDependencies": {
+    "@eslint/compat": "^2.0.4",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-svelte": "^3.17.0",
+    "globals": "^17.4.0",
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1"
   }
 }
