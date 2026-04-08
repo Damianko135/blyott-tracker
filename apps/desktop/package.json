@@ -1,6 +1,6 @@
 {
-  "name": "@svelteplex/desktop",
-  "productName": "SveltePlex",
+  "name": "@blyott-tracker/desktop",
+  "productName": "blyott-tracker",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -51,7 +51,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@svelteplex/svelte": "workspace:*",
+    "@blyott-tracker/svelte": "workspace:*",
     "electron-squirrel-startup": "^1.0.1"
   }
 }

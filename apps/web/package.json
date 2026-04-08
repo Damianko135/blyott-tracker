@@ -1,5 +1,5 @@
 {
-  "name": "@svelteplex/web",
+  "name": "@blyott-tracker/web",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -16,7 +16,7 @@
     "shadcn": "pnpm dlx shadcn-svelte@latest add $@ -c ../../packages/svelte"
   },
   "dependencies": {
-    "@svelteplex/svelte": "workspace:*"
+    "@blyott-tracker/svelte": "workspace:*"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

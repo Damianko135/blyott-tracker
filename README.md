@@ -1,4 +1,4 @@
-# SveltePlex
+# blyott-tracker
 
 This is a monorepo template for SvelteKit apps. It shows you the basics of how to set up a Svelte
 component library, and how to use it in a SvelteKit app throughout a monorepo setup.
@@ -65,8 +65,7 @@ Currently, in the monorepo, every `package.json` has a `shadcn` script that runs
 install `shadcn-svelte` components from any workspace in the monorepo just like you do a normal
 `npm` package, but the contents will always be installs in the `packages/svelte` directory.
 
-> [!IMPORTANT] 
-> You should only install `shadcn-svelte` components using the `shadcn` script:
+> [!IMPORTANT] You should only install `shadcn-svelte` components using the `shadcn` script:
 >
 > ```bash
 > pnpm run shadcn <component-name>
@@ -94,8 +93,8 @@ here.
 
 We can already use `shadcn-svelte` components in other packages in the monorepo since we export them
 from the `packages/svelte` directory. We import them into apps by adding
-`"@svelteplex/svelte": "workspace:*"` to the `dependencies` in the `package.json` of the app. The
-problem is that the utilities and the styles that the `packages/svelte` components need aren't
+`"@blyott-tracker/svelte": "workspace:*"` to the `dependencies` in the `package.json` of the app.
+The problem is that the utilities and the styles that the `packages/svelte` components need aren't
 imported correctly.
 
 We fix that by first using `@lib` imports within the `packages/svelte` directory instead of `$lib`.
@@ -124,7 +123,7 @@ styles because we export them from the `packages/svelte` package:
 Within the app's `app.css`, all you have to do is import:
 
 ```
-@import '@svelteplex/svelte/shadcn/css';
+@import '@blyott-tracker/svelte/shadcn/css';
 ```
 
 The problem now is that `tailwindcss` needs to discover these files so that it can parse the class

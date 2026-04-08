@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge } from '@svelteplex/svelte/shadcn/badge';
+  import { Badge } from '@blyott-tracker/svelte/shadcn/badge';
 </script>
 
 <div class="flex h-screen w-screen flex-col items-center justify-center">
@@ -10,7 +10,7 @@
     >
       Mono
     </Badge>
-    <h1 class="font-garamond -mt-2 text-9xl font-medium">SveltePlex</h1>
+    <h1 class="font-garamond -mt-2 text-9xl font-medium">blyott-tracker</h1>
     <h2 class="font-garamond mt-5 text-lg">Monorepo for Everything Svelte</h2>
   </div>
 </div>
