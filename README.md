@@ -93,7 +93,7 @@ here.
 
 We can already use `shadcn-svelte` components in other packages in the monorepo since we export them
 from the `packages/ui` directory. We import them into apps by adding
-`"@blyott-tracker/svelte": "workspace:*"` to the `dependencies` in the `package.json` of the app.
+`"@blyott-tracker/ui": "workspace:*"` to the `dependencies` in the `package.json` of the app.
 The problem is that the utilities and the styles that the `packages/ui` components need aren't
 imported correctly.
 
@@ -123,7 +123,7 @@ styles because we export them from the `packages/ui` package:
 Within the app's `app.css`, all you have to do is import:
 
 ```
-@import '@blyott-tracker/svelte/shadcn/css';
+@import '@blyott-tracker/ui/shadcn/css';
 ```
 
 The problem now is that `tailwindcss` needs to discover these files so that it can parse the class

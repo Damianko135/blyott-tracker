@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge } from '@blyott-tracker/svelte/shadcn/badge';
+  import { Badge } from '@blyott-tracker/ui/shadcn/badge';
 </script>
 
 <div class="flex h-screen w-screen flex-col items-center justify-center">

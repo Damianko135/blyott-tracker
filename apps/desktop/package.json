@@ -16,7 +16,8 @@
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run && npm run test:e2e",
     "test:e2e": "playwright test",
-    "shadcn": "pnpm dlx shadcn-svelte@latest add $@ -c ../../../packages/ui"
+    "shadcn": "pnpm dlx shadcn-svelte@latest add $@ -c ../../../packages/ui",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.11.1",
@@ -51,7 +52,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@blyott-tracker/svelte": "workspace:*",
+    "@blyott-tracker/ui": "workspace:*",
     "electron-squirrel-startup": "^1.0.1"
   }
 }

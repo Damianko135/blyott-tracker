@@ -1,6 +1,6 @@
+import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { svelteTesting } from '@testing-library/svelte/vite';
-import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
@@ -10,7 +10,7 @@ export default defineConfig({
     sveltekit(),
     viteStaticCopy({
       // don't point to static directory, point to finished build directory (static -> / after build)
-      targets: [{ src: '../../packages/uitic/fonts/*', dest: 'fonts' }]
+      targets: [{ src: '../../packages/ui/static/fonts/*', dest: 'fonts' }]
     })
   ],
   envDir: '../..',
