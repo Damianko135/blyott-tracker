@@ -1,0 +1,17 @@
+{
+  "name": "svelteplex",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.8.1",
+  "scripts": {
+    "setup": "docker compose -f ./setup.yaml -p setup up",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
+    "shadcn": "pnpm dlx shadcn-svelte@latest add $@ -c packages/svelte"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "prettier-plugin-svelte": "^3.5.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3"
+  }
+}
